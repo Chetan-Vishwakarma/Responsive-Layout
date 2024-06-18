@@ -42,14 +42,14 @@ export default function SignUpForm({ isSignIn, setIsSignIn }: Props) {
                     <Controller
                         name="First Name"
                         control={control}
-                        render={({ field }) => <TextField {...field} fullWidth id="outlined-basic" label="First Name" size="small" variant="outlined" helperText={errors?.['First Name']?.message}/>}
+                        render={({ field }) => <TextField error={errors?.['First Name']?.message?true:undefined} {...field} fullWidth id="outlined-basic" label="First Name" size="small" variant="outlined" helperText={errors?.['First Name']?.message}/>}
                     />
                 </div>
                 <div>
                     <Controller
                         name="Last Name"
                         control={control}
-                        render={({ field }) => <TextField {...field} fullWidth id="outlined-basic" label="Last Name" size="small" variant="outlined" helperText={errors?.['Last Name']?.message}/>}
+                        render={({ field }) => <TextField error={errors?.['Last Name']?.message?true:undefined} {...field} fullWidth id="outlined-basic" label="Last Name" size="small" variant="outlined" helperText={errors?.['Last Name']?.message}/>}
                     />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ export default function SignUpForm({ isSignIn, setIsSignIn }: Props) {
                             id="combo-box-demo"
                             options={[{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }, { label: 'Other', value: 'Other' }]}
                             sx={{ width: 'auto' }}
-                            renderInput={(params) => <TextField {...params} label="Gender" helperText={errors?.['Gender']?.message}/>}
+                            renderInput={(params) => <TextField error={errors?.['Gender']?.message?true:undefined} {...params} label="Gender" helperText={errors?.['Gender']?.message}/>}
                         />}
                     />
                 </div>
@@ -72,14 +72,14 @@ export default function SignUpForm({ isSignIn, setIsSignIn }: Props) {
                     <Controller
                         name="Email"
                         control={control}
-                        render={({ field }) => <TextField {...field} fullWidth id="outlined-basic" label="Email" size="small" variant="outlined" helperText={errors?.['Email']?.message}/>}
+                        render={({ field }) => <TextField error={errors?.['Email']?.message?true:undefined} {...field} fullWidth id="outlined-basic" label="Email" size="small" variant="outlined" helperText={errors?.['Email']?.message}/>}
                     />
                 </div>
                 <div>
                     <Controller
                         name="Password"
                         control={control}
-                        render={({ field }) => <TextField {...field} type="password" fullWidth id="outlined-basic" label="Password" size="small" variant="outlined" helperText={errors?.['Password']?.message}/>} />
+                        render={({ field }) => <TextField error={errors?.['Password']?.message?true:undefined} {...field} type="password" fullWidth id="outlined-basic" label="Password" size="small" variant="outlined" helperText={errors?.['Password']?.message}/>} />
                 </div>
                 <Stack direction={'row'} justifyContent={'space-between'}>
                     <Button type="submit" variant="contained" size="small">Sign In</Button>

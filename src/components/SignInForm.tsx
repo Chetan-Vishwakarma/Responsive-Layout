@@ -34,14 +34,14 @@ export default function SignInForm({ isSignIn, setIsSignIn }: Props) {
                         <Controller
                             name="Email"
                             control={control}
-                            render={({ field }) => <TextField {...field} fullWidth id="outlined-basic" label="Email" size="small" variant="outlined" helperText={errors?.Email?.message} />}
+                            render={({ field }) => <TextField error={errors?.['Email']?.message?true:undefined} {...field} fullWidth id="outlined-basic" label="Email" size="small" variant="outlined" helperText={errors?.Email?.message} />}
                         />
                     </div>
                     <div>
                         <Controller
                             name="Password"
                             control={control}
-                            render={({ field }) => <TextField {...field} fullWidth id="outlined-basic" label="Password" size="small" variant="outlined" helperText={errors?.Password?.message} />}
+                            render={({ field }) => <TextField error={errors?.['Password']?.message?true:undefined} {...field} fullWidth id="outlined-basic" label="Password" size="small" variant="outlined" helperText={errors?.Password?.message} />}
                         />
                     </div>
                     <Stack direction={'row'} justifyContent={'space-between'}>

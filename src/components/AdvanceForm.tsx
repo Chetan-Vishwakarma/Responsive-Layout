@@ -19,8 +19,8 @@ export default function AdvanceForm() {
                             <SignUpForm setIsSignIn={setIsSignIn} isSignIn={isSignIn} />
                     }
                 </Box>
-                <Box sx={{ width: '50%', height: 'auto', display: {xs:'none',sm:'block',lg:'block',md:'block'}}}>
-                    <img style={{ height: '100%' }} src="https://t4.ftcdn.net/jpg/02/00/90/53/360_F_200905394_2u1hKNTSawkcR6N1X0aX0PiSBR1tvUMn.jpg" />
+                <Box sx={{ backgroundImage: 'linear-gradient(to right, #6a11cb 0%, #2575fc 100%)',width: '50%', height: 'auto', display: {xs:'none',sm:'block',lg:'block',md:'block'}}}>
+                    <img style={{ height: '100%' }} src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-2578971-2147152.png" />
                 </Box>
             </Stack>
         </Stack>
