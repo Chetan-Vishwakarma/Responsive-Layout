@@ -21,8 +21,8 @@ interface SignUpFormInputs {
 }
 
 const schema = yup.object({
-    "First Name": yup.string().required('First Name is required').min(4,'First Name must contain 4 letters'),
-    "Last Name": yup.string().required('Last Name is required').min(5,'First Name must contain 5 letters'),
+    "First Name": yup.string().required('First Name is required').min(4,'First Name must contain 4 letters').matches(/^[a-zA-Z,'.\-\s]+$/,'Numbers not accepted as firstname'),
+    "Last Name": yup.string().required('Last Name is required').min(5,'First Name must contain 5 letters').matches(/^[a-zA-Z,'.\-\s]+$/,'Numbers not accepted as lastname'),
     "Gender": yup.object().nullable().required('Gender is required'),
     "Email": yup.string().required('Email is required').email('Invalid email address').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,'Invalid email address'),
     "Password": yup.string().required('Password is required').matches(/^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/, 'Password must contain number, string and special character')
