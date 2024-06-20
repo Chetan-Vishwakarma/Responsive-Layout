@@ -25,7 +25,7 @@ export default function CustomLayout() {
         setOpen(newOpen);
     };
     const DrawerList = (
-        <Box sx={{ width: 250 }} role="presentation">
+        <Box sx={{ width: 'auto' }} role="presentation">
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem key={text} disablePadding>
@@ -76,34 +76,47 @@ export default function CustomLayout() {
     return <>
         <Box>
             {CustomAppbar}
-            <Grid container spacing={2}>
-                <Grid item lg={3} md={3} sx={{ display: { xs: 'none', lg: 'block', md: 'block' } }}>
-                    <Item sx={{ height: '100vh' }}>
+            <Grid container>
+                <Grid item lg={2} md={2} sx={{ display: { xs: 'none', lg: 'block', md: 'block' } }}>
+                    <Item sx={{ height: '100%' }}>
                         {DrawerList}
                         <Drawer open={open} onClose={toggleDrawer(false)}>
                             {DrawerList}
                         </Drawer>
                     </Item>
                 </Grid>
-                <Grid item lg={9} xs={12} md={9}>
-                    <Item>
-                        <Box sx={{margin:'5px'}}>
-                            <Grid container justifyContent={'space-between'}>
-                                <Grid lg={3} md={6} sx={{maxWidth:{lg:"24% !important"}}}>
-                                    <Item sx={{height: '140px'}}>Item-1</Item>
+                <Grid item lg={10} xs={12} md={10}>
+                    <Box mr={2} my={2} sx={{ marginLeft: { xs: '16px' } }}>
+                        <Grid container spacing={2}>
+                            <Grid item lg={3} md={6} sm={12} xs={12}>
+                                <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                            </Grid>
+                            <Grid item lg={3} md={6} sm={12} xs={12}>
+                                <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                            </Grid>
+                            <Grid item lg={3} md={6} sm={12} xs={12}>
+                                <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                            </Grid>
+                            <Grid item lg={3} md={6} sm={12} xs={12}>
+                                <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                            </Grid>
+                        </Grid>
+                        <Box mt={2}>
+                            <Grid container spacing={2}>
+                                <Grid item lg={8} sm={12} xs={12} md={6}>
+                                    <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'400px'}>Box-1</Box></Item>
                                 </Grid>
-                                <Grid lg={3} md={6} sx={{maxWidth:{lg:"24% !important"}}}>
-                                    <Item sx={{height: '140px'}}>Item-2</Item>
-                                </Grid>
-                                <Grid lg={3} md={6} sx={{maxWidth:{lg:"24% !important"}}}>
-                                    <Item sx={{height: '140px'}}>Item-3</Item>
-                                </Grid>
-                                <Grid lg={3} md={6} sx={{maxWidth:{lg:"24% !important"}}}>
-                                    <Item sx={{height: '140px'}}>Item-3</Item>
+                                <Grid item lg={4} sm={12} xs={12} md={6}>
+                                    <Item sx={{ boxShadow: 3 }}><Box width={'100%'} height={'400px'}>Box-1</Box></Item>
                                 </Grid>
                             </Grid>
                         </Box>
-                    </Item>
+                        <Item sx={{ boxShadow: 3 }}>
+                            <Box height={'450px'} mt={2}>
+                            Table-Container
+                        </Box>
+                        </Item>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
