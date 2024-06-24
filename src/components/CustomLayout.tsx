@@ -11,7 +11,9 @@ import { useState } from 'react';
 import { BarChart } from '@mui/x-charts';
 import SearchIcon from '@mui/icons-material/Search';
 import CustomDataGrid from './CustomDataGrid';
-import Image from 'next/image'
+import Image from 'next/image';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,6 +26,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function CustomLayout() {
     const [open, setOpen] = useState(false);
+    const [currentCard, setCurrentCard] = useState(1);
 
     const toggleDrawer = (newOpen: boolean) => () => {
         console.log('newOpen', newOpen);
@@ -92,11 +95,11 @@ export default function CustomLayout() {
                 </Grid>
                 <Grid item lg={10} xs={12} md={10}>
                     <Box mr={2} my={2} sx={{ marginLeft: { xs: '16px' } }}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={2} sx={{ display: { xs: 'none', lg: 'flex', md: 'flex' } }}>
                             <Grid item lg={3} md={6} sm={12} xs={12}>
                                 <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(47,9,119) 0%, rgb(47,9,119) 48%,rgb(72, 7, 149) 48%, rgb(72, 7, 149) 53%,rgb(109, 5, 178) 53%, rgb(109, 5, 178) 56%,rgb(145, 2, 208) 56%, rgb(145, 2, 208) 69%,rgb(181, 0, 237) 69%, rgb(181, 0, 237) 100%)' }}>
                                     <Box width={'100%'} height={'120px'} position={'relative'}>
-                                    <Image style={{position:'absolute', right: '-3%'}} src='/chart2.png' alt='' width="200" height="200"></Image>
+                                        <Image style={{ position: 'absolute', right: '-3%' }} src='/chart2.png' alt='' width="200" height="200"></Image>
                                         {/* <img src='./chart1.png'/> */}
                                     </Box>
                                 </Item>
@@ -111,6 +114,57 @@ export default function CustomLayout() {
                                 <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(119,9,9) 0%, rgb(119,9,9) 48%,rgb(149,7,7) 48%, rgb(149,7,7) 53%,rgb(178,5,5) 53%, rgb(178,5,5) 56%,rgb(208,2,2) 56%, rgb(208,2,2) 69%,rgb(237,0,0) 69%, rgb(237,0,0) 100%)' }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
                             </Grid>
                         </Grid>
+                        <Box className="for-mobile-view" sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', boxSizing:'content-box' }}>
+                                <Box>
+                                <a href={`#card_${currentCard-1}`} onClick={(e)=>{
+                                        e.stopPropagation();
+                                        setCurrentCard(currentCard-1);
+                                        var x=window.scrollX;
+                                        var y=window.scrollY;
+                                        window.onscroll=function(){window.scrollTo(x, y);};
+                                        setTimeout(()=>{
+                                            window.onscroll=function(){};
+                                        });
+                                    }}><ArrowBackIosIcon/></a>
+                                </Box>
+                            </Box>
+                            <Box sx={{ overflow: 'auto', scrollBehavior:'smooth' }} width={'100%'}>
+                                <Box border={'1px solid grey'} sx={{ display: { xs: 'flex', lg: 'none', md: 'none' }, width: '500%' }}>
+                                    <Box id="card_1" width={'75%'}>
+                                        <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(47,9,119) 0%, rgb(47,9,119) 48%,rgb(72, 7, 149) 48%, rgb(72, 7, 149) 53%,rgb(109, 5, 178) 53%, rgb(109, 5, 178) 56%,rgb(145, 2, 208) 56%, rgb(145, 2, 208) 69%,rgb(181, 0, 237) 69%, rgb(181, 0, 237) 100%)' }}>
+                                            <Box width={'100%'} height={'120px'} position={'relative'}>
+                                                <Image style={{ position: 'absolute', right: '-3%' }} src='/chart2.png' alt='' width="200" height="200"></Image>
+                                                {/* <img src='./chart1.png'/> */}
+                                            </Box>
+                                        </Item>
+                                    </Box>
+                                    <Box id="card_2" width={'75%'} sx={{ marginLeft: '3%' }}>
+                                        <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(9,105,119) 0%, rgb(9,105,119) 48%,rgb(7,128,149) 48%, rgb(7,128,149) 53%,rgb(5,170,178) 53%, rgb(5,170,178) 56%,rgb(2,203,208) 56%, rgb(2,203,208) 69%,rgb(0,237,237) 69%, rgb(0,237,237) 100%)' }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                                    </Box>
+                                    <Box id="card_3" width={'75%'} sx={{ marginLeft: '3%' }}>
+                                        <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(9,79,119) 0%, rgb(9,79,119) 48%,rgb(7,78,149) 48%, rgb(7,78,149) 53%,rgb(5,82,178) 53%, rgb(5,82,178) 56%,rgb(2,90,208) 56%, rgb(2,90,208) 69%,rgb(0,107,237) 69%, rgb(0,107,237) 100%)' }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                                    </Box>
+                                    <Box id="card_4" width={'75%'} sx={{ marginLeft: '3%' }}>
+                                        <Item sx={{ boxShadow: 3, background: 'radial-gradient(circle at top right, rgb(119,9,9) 0%, rgb(119,9,9) 48%,rgb(149,7,7) 48%, rgb(149,7,7) 53%,rgb(178,5,5) 53%, rgb(178,5,5) 56%,rgb(208,2,2) 56%, rgb(208,2,2) 69%,rgb(237,0,0) 69%, rgb(237,0,0) 100%)' }}><Box width={'100%'} height={'120px'}>Box-1</Box></Item>
+                                    </Box>
+                                </Box>
+                            </Box>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '4px' }}>
+                                <Box>
+                                    <a href={`#card_${currentCard+1}`} onClick={(e)=>{
+                                        setCurrentCard(currentCard+1);
+                                        e.stopPropagation();
+                                        var x=window.scrollX;
+                                        var y=window.scrollY;
+                                        window.onscroll=function(){window.scrollTo(x, y);};
+                                        setTimeout(()=>{
+                                            window.onscroll=function(){};
+                                        });
+                                    }}><ArrowForwardIosIcon/></a>
+                                </Box>
+                            </Box>
+                        </Box>
                         <Box mt={2}>
                             <Grid container spacing={2}>
                                 <Grid item lg={8} sm={12} xs={12} md={6}>
